@@ -34,15 +34,86 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Start the program.
+
+2.Declare the module name and define the input and output ports.
+
+3.Inputs: J, K, Clock, and Reset.
+
+4.Outputs: Q and QB.
+
+5.Create an always block that is triggered on the positive edge of the clock signal.
+
+6.Inside the always block, first check the reset condition.
+
+7.If the reset input is active, maintain or initialize the outputs as required.
+
+8.When reset is inactive, implement the JK flip-flop logic based on the inputs J and K.
+
+9.If both J and K are 0, the output remains unchanged (Hold condition).
+
+10.If J and K are different, the output follows the value of J (Set or Reset condition).
+
+11.If both J and K are 1, the output toggles (changes to its complement).
+
+12.End the always block and complete the module definition.
+
+13.Simulate the design by applying various combinations of J and K along with clock pulses to observe the hold, set, reset, and toggle conditions.
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+### Developed by: SUTHAN.B
+
+### RegisterNumber: 25018310
+
+```
+module JK_Flip_Flop(q, qb,j,k,clock,reset);
+input j,k,clock,reset;
+output reg q, qb;
+	 
+always @ (posedge (clock))
+
+    begin 
+        if (!reset)
+            begin
+               q <= q;
+               qb <=qb;
+            end
+else 
+      begin
+        if (j==0 && k==0)
+		       begin
+			    q <= q;
+			    q <= qb;
+			    end	 
+        
+        else if (j!=k)
+             begin
+	          q <= j;
+	          qb <= k;
+	          end
+        else if (j==1 && k==1)
+             begin
+	          q <= ~q;
+	          qb <= ~qb;
+	          end
+	  
+      end
+ 
+end           
+endmodule 
+```
+
 
 **RTL LOGIC FOR FLIPFLOPS**
+<img width="971" height="428" alt="image" src="https://github.com/user-attachments/assets/1ce2568d-2608-481d-ab1c-bd7c49db1723" />
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1916" height="1119" alt="image" src="https://github.com/user-attachments/assets/8d62cc59-d434-4472-8d6c-0ccda3e86628" />
+
 
 **RESULTS**
+
+Studied and verified the truth table of JK flip-flop in  Quartus II using verilog programming successfully.
